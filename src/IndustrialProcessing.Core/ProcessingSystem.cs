@@ -201,7 +201,8 @@ namespace IndustrialProcessing
                             sw.Elapsed.TotalMilliseconds, DateTime.Now));
                     }
                     handle.Complete(result);
-                    JobCompleted?.Invoke(this, new JobCompletedEventArgs(job, result, sw.Elapsed));
+                    try { JobCompleted?.Invoke(this, new JobCompletedEventArgs(job, result, sw.Elapsed)); }
+                    catch { /* greska u subscriber-u ne smije da rusi worker */ }
                     return;
                 }
                 catch (Exception err)
@@ -209,7 +210,8 @@ namespace IndustrialProcessing
                     sw.Stop();
                     total += sw.Elapsed;
                     string reason = err is OperationCanceledException ? "TIMEOUT" : "ERROR";
-                    JobFailed?.Invoke(this, new JobFailedEventArgs(job, attempt, reason, err));
+                    try { JobFailed?.Invoke(this, new JobFailedEventArgs(job, attempt, reason, err)); }
+                    catch { /* greska u subscriber-u ne smije da rusi worker */ }
 
                     if (attempt == MaxRetries)
                     {
@@ -251,13 +253,11 @@ namespace IndustrialProcessing
             if (disposed) return;
             disposed = true;
 
-            reportTimer.Dispose();
-            shutdown.Cancel();
-
+            try { reportTimer.Dispose(); } catch { }
+            try { shutdown.Cancel(); } catch { }
             try { Task.WaitAll(workers, TimeSpan.FromSeconds(2)); } catch { }
-
-            signal.Dispose();
-            shutdown.Dispose();
+            try { signal.Dispose(); } catch { }
+            try { shutdown.Dispose(); } catch { }
         }
     }
 

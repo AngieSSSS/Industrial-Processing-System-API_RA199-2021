@@ -26,10 +26,17 @@ namespace IndustrialProcessing.Logging
 
             return Task.Run(() =>
             {
-                lock (writeLock)
+                try
                 {
-                    if (disposed) return;
-                    writer.WriteLine(line);
+                    lock (writeLock)
+                    {
+                        if (disposed) return;
+                        writer.WriteLine(line);
+                    }
+                }
+                catch
+                {
+                    // logger ne smije da rusi sistem
                 }
             });
         }

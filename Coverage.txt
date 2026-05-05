@@ -1,0 +1,25 @@
+﻿Code Coverage Report - Industrial Processing System
+===========================================
+
+Line coverage:    90,93%  (321 / 353 linija)
+Branch coverage:  75,75%
+
+Po klasama:
+  IndustrialProcessing.JobAbortException                  100,00%
+  IndustrialProcessing.ExecutionRecord                    100,00%
+  IndustrialProcessing.Job                                88,88%
+  IndustrialProcessing.JobHandle                          100,00%
+  IndustrialProcessing.ProcessingSystem                   89,83%
+  IndustrialProcessing.ProcessingSystem/<WorkerLoop>d__39 100,00%
+  IndustrialProcessing.JobCompletedEventArgs              100,00%
+  IndustrialProcessing.JobFailedEventArgs                 0,00%
+  IndustrialProcessing.Tasks.IoTask                       100,00%
+  IndustrialProcessing.Tasks.PayloadDecoder               88,88%
+  IndustrialProcessing.Tasks.PrimeTask                    100,00%
+  IndustrialProcessing.Reporting.ReportWriter             100,00%
+  IndustrialProcessing.Logging.AsyncLogger                100,00%
+  IndustrialProcessing.Configuration.SystemConfig         80,64%
+
+Generisano komandom:
+  dotnet test --collect:"XPlat Code Coverage"
+

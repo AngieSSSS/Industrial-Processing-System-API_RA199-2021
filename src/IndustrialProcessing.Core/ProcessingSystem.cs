@@ -205,6 +205,11 @@ namespace IndustrialProcessing
                     catch { /* greska u subscriber-u ne smije da rusi worker */ }
                     return;
                 }
+                catch (OperationCanceledException) when (token.IsCancellationRequested)
+                {
+                    handle.Abort(new OperationCanceledException("Sistem se gasi."));
+                    return;
+                }
                 catch (Exception err)
                 {
                     sw.Stop();
@@ -256,8 +261,9 @@ namespace IndustrialProcessing
             try { reportTimer.Dispose(); } catch { }
             try { shutdown.Cancel(); } catch { }
             try { Task.WaitAll(workers, TimeSpan.FromSeconds(2)); } catch { }
-            try { signal.Dispose(); } catch { }
-            try { shutdown.Dispose(); } catch { }
+
+            signal.Dispose();
+            shutdown.Dispose();
         }
     }
 

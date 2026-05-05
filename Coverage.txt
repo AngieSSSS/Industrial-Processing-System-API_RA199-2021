@@ -1,7 +1,7 @@
 ﻿Code Coverage Report - Industrial Processing System
 ===========================================
 
-Line coverage:    90,05%  (326 / 362 linija)
+Line coverage:    89,58%  (327 / 365 linija)
 Branch coverage:  75,75%
 
 Po klasama:
@@ -9,7 +9,7 @@ Po klasama:
   IndustrialProcessing.ExecutionRecord                    100,00%
   IndustrialProcessing.Job                                88,88%
   IndustrialProcessing.JobHandle                          100,00%
-  IndustrialProcessing.ProcessingSystem                   88,33%
+  IndustrialProcessing.ProcessingSystem                   86,99%
   IndustrialProcessing.ProcessingSystem/<WorkerLoop>d__39 100,00%
   IndustrialProcessing.JobCompletedEventArgs              100,00%
   IndustrialProcessing.JobFailedEventArgs                 0,00%

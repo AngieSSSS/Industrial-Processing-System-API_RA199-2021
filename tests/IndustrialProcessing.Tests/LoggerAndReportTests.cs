@@ -57,7 +57,7 @@ namespace IndustrialProcessing.Tests
         }
 
         [Fact]
-        public async Task Report_ZadrzavaSamoPoslednjih10()
+        public async Task Report_ZadrzavaSamoPosljednjih10()
         {
             var dir = Path.Combine(Path.GetTempPath(), "rep_" + Guid.NewGuid());
             Directory.CreateDirectory(dir);

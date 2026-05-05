@@ -72,7 +72,7 @@ namespace IndustrialProcessing.Reporting
             {
                 doc.Save(fullPath);
 
-                // ostavi poslednjih KeepLast, najstarije obrisi
+                // ostavi posljednjih KeepLast, najstarije obrisi
                 var existing = Directory.GetFiles(outputDir, "processing_report_*.xml")
                     .OrderBy(f => File.GetCreationTimeUtc(f))
                     .ToList();

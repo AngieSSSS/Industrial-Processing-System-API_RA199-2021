@@ -20,7 +20,7 @@ producer-e i generise finalni izvjestaj.
 dotnet test --collect:"XPlat Code Coverage"
 ```
 
-Rezultat poslednjeg pokretanja: `Coverage.txt` (sazetak) i
+Rezultat posljednjeg pokretanja: `Coverage.txt` (sazetak) i
 `coverage.cobertura.xml` (puni izvjestaj).
 
 ## Konfiguracija (`config.xml`)
